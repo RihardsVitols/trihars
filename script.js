@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </video>
         `,
         video: `
-            <img src="video-bg.jpg" class="bg-image-display" alt="Reach background">
+            <img src="video-bg.jpg" class="bg-image-display" alt="Video background">
         `,
         reach: `
             <video autoplay muted loop id="bg-video">
@@ -36,42 +36,39 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Function to load videos dynamically from videos.json
-function loadVideos() {
-    fetch('videos.json')
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById('dynamic-video-container');
-            if (!container) return;
-            
-            container.innerHTML = ''; // Clear previous
+    function loadVideos() {
+        fetch('videos.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('dynamic-video-container');
+                if (!container) return;
+                
+                container.innerHTML = ''; // Clear previous
 
-            if (data.videos && data.videos.length > 0) {
-                data.videos.forEach(vid => {
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'video-wrapper';
-                    wrapper.innerHTML = `
-                        <iframe 
-                            src="${vid.url}" 
-                            title="${vid.title}" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    `;
-                    container.appendChild(wrapper);
-                });
-            } else {
-                container.innerHTML = '<p style="color: #fff;">No videos added yet.</p>';
-            }
-        })
-        .catch(err => console.log('Error loading videos:', err));
-}
+                if (data.videos && data.videos.length > 0) {
+                    data.videos.forEach(vid => {
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'video-wrapper';
+                        wrapper.innerHTML = `
+                            <iframe 
+                                src="${vid.url}" 
+                                title="${vid.title}" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        `;
+                        container.appendChild(wrapper);
+                    });
+                } else {
+                    container.innerHTML = '<p style="color: #fff;">No videos added yet.</p>';
+                }
+            })
+            .catch(err => console.log('Error loading videos:', err));
+    }
 
-// Call it when the page loads so it's ready
-document.addEventListener('DOMContentLoaded', () => {
+    // Load videos on initial page load
     loadVideos();
-    // ... (rest of your existing script code)
-});
 
     // Helper function to return to the opening title page
     function resetToTitlePage() {
@@ -98,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bgVideo) {
             bgVideo.currentTime = 0;
             bgVideo.play().catch(error => {
-                // Safely handles any interruption error quietly
                 console.log("Video play interrupted:", error);
             });
         }
