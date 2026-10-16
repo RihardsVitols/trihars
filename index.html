@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trihars</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Media Container (Changes dynamically via JS) -->
+    <div id="background-container">
+        <!-- Default Background WebM Video -->
+        <video autoplay muted loop id="bg-video">
+            <source src="index_video.webm" type="video/webm">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+
+    <!-- Top Right Navigation Links -->
+    <nav class="top-nav">
+        <a href="#" class="nav-link" data-target="about">about</a>
+        <a href="#" class="nav-link" data-target="video">video</a>
+        <a href="#" class="nav-link" data-target="reach">reach</a>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-container">
+        
+        <!-- TITLE PAGE (Default View) -->
+        <section id="title-page" class="page-section active">
+            <img src="your-logo.png" alt="trihars logo" class="logo">
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page-section">
+            <div class="about-container">
+                <p>Trihars is an audiovisual electronic collective from Latvia that fuses experimental electronic music ranging from industrial to ambient noise with hypnotic, geometric live visuals.</p>
+                <p>The group operates as an "audiovisual organism" where the synth and noise soundscapes created by members Kristaps Biters and Peters Riekstins seamlessly interact with</p>
+                <p>real-time video projections made by Rihards Vitols, making their live performances an immersive multimedia expierence since 2013.</p>
+            </div>
+        </section>
+
+        <!-- INDEX / VIDEO PAGE -->
+        <section id="video" class="page-section">
+            <div class="text-card index-card">
+                <h1>Index Sources</h1>
+                <div class="index-list">
+                    <a href="#" class="index-item"><span>01.</span> Project Architecture & Setup</a>
+                    <a href="#" class="index-item"><span>02.</span> Research Notes & References</a>
+                    <a href="#" class="index-item"><span>03.</span> Media Assets & Clips</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- REACH PAGE -->
+        <section id="reach" class="page-section">
+            <div class="about-container">
+                <h1>trihars@gmail.com</h1>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
