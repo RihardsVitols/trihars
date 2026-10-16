@@ -206,10 +206,10 @@ body, html {
 
 /* Each video wrapper takes roughly 70-75% of the screen height and snaps into place */
 .video-wrapper {
-    width: 80vw;  /* Takes 75% of screen width */
+    width: 70vw;  /* Takes 75% of screen width */
     height: 90vh; /* Takes 75% of screen height */
     min-height: 75vh;
-    margin-bottom: 10vh; /* Gap between stacked videos */
+    margin-bottom: 15vh; /* Gap between stacked videos */
     scroll-snap-align: center; /* Snaps the video right to the center of the viewport */
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
