@@ -21,7 +21,7 @@ body, html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: 0;
     overflow: hidden;
     background-color: #000000;
 }
@@ -67,6 +67,7 @@ body, html {
     width: 100%;
     height: 100%;
     position: relative;
+    z-index: 1; /* Ensures text, logos, and menus appear on top of the video */
 }
 
 /* Page Sections Control */
