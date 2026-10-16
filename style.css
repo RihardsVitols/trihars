@@ -189,8 +189,8 @@ body, html {
 
 /* Container that holds and centers the video, set to 70% of the screen */
 .video-container {
-    width: 70vw;  /* Takes 70% of the viewport width */
-    height: 70vh; /* Takes 70% of the viewport height */
+    width: 80vw;  /* Takes 70% of the viewport width */
+    height: 80vh; /* Takes 70% of the viewport height */
     position: absolute;
     top: 50%;
     left: 50%;
