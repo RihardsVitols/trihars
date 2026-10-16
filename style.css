@@ -267,8 +267,8 @@ body, html {
 
     .video-wrapper {
         width: 92vw;  
-        height: 52vh; 
-        min-height: 52vh;
+        height: 30vh; 
+        min-height: 30vh;
         margin-bottom: 5vh;
     }
 }
