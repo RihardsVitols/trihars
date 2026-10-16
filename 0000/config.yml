@@ -1,0 +1,16 @@
+backend:
+  name: git-gateway
+  branch: main # Change to 'master' if your default branch is master
+
+media_folder: "uploads" # Where uploaded media files will be stored
+public_folder: "/uploads"
+
+collections:
+  - name: "content"
+    label: "Site Content"
+    files:
+      - file: "index.html"
+        label: "Homepage Structure"
+        name: "homepage"
+        fields:
+          - {label: "Note", name: "note", widget: "string", default: "Note: Direct HTML edits or JSON configuration can be mapped here."}
