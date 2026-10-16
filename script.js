@@ -13,15 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
         reach: 'reach'
     };
 
-    // Backgrounds configuration for each page state
+    // Backgrounds configuration with explicit mobile-friendly video tags
     const backgrounds = {
         title: `
-            <video autoplay muted loop id="bg-video">
+            <video autoplay muted loop playsinline id="bg-video">
                 <source src="index_video.webm" type="video/webm">
             </video>
         `,
         about: `
-            <video autoplay muted loop id="bg-video">
+            <video autoplay muted loop playsinline id="bg-video">
                 <source src="about_video.webm" type="video/webm">
             </video>
         `,
@@ -29,11 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="video-bg.jpg" class="bg-image-display" alt="Video background">
         `,
         reach: `
-            <video autoplay muted loop id="bg-video">
+            <video autoplay muted loop playsinline id="bg-video">
                 <source src="reach_video.webm" type="video/webm">
             </video>
         `
     };
+
+    // Initialize the default title background video immediately on load
+    bgContainer.innerHTML = backgrounds.title;
+    const initialVideo = document.getElementById('bg-video');
+    if (initialVideo) {
+        initialVideo.play().catch(err => console.log("Initial video play blocked:", err));
+    }
 
     // Function to load videos dynamically from videos.json
     function loadVideos() {
@@ -61,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         container.appendChild(wrapper);
                     });
                 } else {
-                    container.innerHTML = '<p style="color: #fff;">No videos added yet.</p>';
+                    container.innerHTML = '<p style="color: #fff; text-align: center;">No videos added yet.</p>';
                 }
             })
             .catch(err => console.log('Error loading videos:', err));
