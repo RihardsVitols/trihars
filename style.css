@@ -11,7 +11,7 @@ body, html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
     color: #ffffff;
-    background-color: #000000;
+    /* background-color: #000000; */
 }
 
 /* Background Video / Media Styling */
