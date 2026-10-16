@@ -35,6 +35,44 @@ document.addEventListener('DOMContentLoaded', () => {
         `
     };
 
+    // Function to load videos dynamically from videos.json
+function loadVideos() {
+    fetch('videos.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('dynamic-video-container');
+            if (!container) return;
+            
+            container.innerHTML = ''; // Clear previous
+
+            if (data.videos && data.videos.length > 0) {
+                data.videos.forEach(vid => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'video-wrapper';
+                    wrapper.innerHTML = `
+                        <iframe 
+                            src="${vid.url}" 
+                            title="${vid.title}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    `;
+                    container.appendChild(wrapper);
+                });
+            } else {
+                container.innerHTML = '<p style="color: #fff;">No videos added yet.</p>';
+            }
+        })
+        .catch(err => console.log('Error loading videos:', err));
+}
+
+// Call it when the page loads so it's ready
+document.addEventListener('DOMContentLoaded', () => {
+    loadVideos();
+    // ... (rest of your existing script code)
+});
+
     // Helper function to return to the opening title page
     function resetToTitlePage() {
         activeTarget = null;
