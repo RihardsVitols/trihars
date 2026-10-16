@@ -1,16 +1,21 @@
 backend:
   name: git-gateway
-  branch: main # Change to 'master' if your default branch is master
+  branch: main
 
-media_folder: "uploads" # Where uploaded media files will be stored
+media_folder: "uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "content"
-    label: "Site Content"
+  - name: "videos"
+    label: "Video Manager"
     files:
-      - file: "index.html"
-        label: "Homepage Structure"
-        name: "homepage"
+      - file: "videos.json"
+        label: "Manage Videos"
+        name: "videos_list"
         fields:
-          - {label: "Note", name: "note", widget: "string", default: "Note: Direct HTML edits or JSON configuration can be mapped here."}
+          - label: "Video Items"
+            name: "videos"
+            widget: "list"
+            fields:
+              - {label: "Video Title", name: "title", widget: "string"}
+              - {label: "Embed URL (YouTube/Vimeo embed link)", name: "url", widget: "string"}
