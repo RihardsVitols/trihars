@@ -186,3 +186,35 @@ body, html {
     background: rgba(255, 255, 255, 0.12);
     transform: translateX(4px);
 }
+
+/* Container that holds and centers the video, set to 70% of the screen */
+.video-container {
+    width: 70vw;  /* Takes 70% of the viewport width */
+    height: 70vh; /* Takes 70% of the viewport height */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfect dead center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Wrapper to ensure the iframe fills the 70% area cleanly with a neat shadow/border */
+.video-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000000;
+}
+
+/* Forces the Vimeo iframe to stretch and fill the entire 70% space */
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
