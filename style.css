@@ -26,7 +26,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer; /* Shows pointer so user knows it's clickable */
+    cursor: pointer;
     transition: opacity 0.5s ease; /* Smooth fade-out transition */
 }
 
@@ -37,18 +37,20 @@ body, html {
 }
 
 .warning-content h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 400;
     letter-spacing: 1px;
     color: #ffffff;
-    line-height: 1.5;
-    text-transform: lowercase; /* Keeps text lowercase as requested */
+    line-height: 1.8; /* Gives a nice breathing room between the two lines */
+    text-transform: lowercase;
 }
 
-/* Makes "CAUTION!" red */
+/* Makes "CAUTION!" red and on its own line above */
 .warning-content .caution-red {
     color: #ff0000;
     text-transform: uppercase;
+    font-size: 2rem; /* Optional: Makes CAUTION! slightly larger */
+    font-weight: 600;
 }
 
 /* Background Video / Media Styling */
