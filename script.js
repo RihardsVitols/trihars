@@ -35,11 +35,24 @@ document.addEventListener('DOMContentLoaded', () => {
         `
     };
 
-    // Initialize the default title background video immediately on load
-    bgContainer.innerHTML = backgrounds.title;
-    const initialVideo = document.getElementById('bg-video');
-    if (initialVideo) {
-        initialVideo.play().catch(err => console.log("Initial video play blocked:", err));
+    // Warning Screen Click to Continue Handler
+    const warningScreen = document.getElementById('warning-screen');
+    if (warningScreen) {
+        warningScreen.addEventListener('click', () => {
+            // Fade out the warning screen
+            warningScreen.style.opacity = '0';
+            setTimeout(() => {
+                warningScreen.style.display = 'none';
+            }, 500); // Matches the 0.5s CSS transition
+
+            // Initialize the default title background video when warning is clicked
+            bgContainer.innerHTML = backgrounds.title;
+            const initialVideo = document.getElementById('bg-video');
+            if (initialVideo) {
+                initialVideo.currentTime = 0;
+                initialVideo.play().catch(err => console.log("Initial video play blocked:", err));
+            }
+        });
     }
 
     // Function to load videos dynamically from videos.json
