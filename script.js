@@ -45,6 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 warningScreen.style.display = 'none';
             }, 500); // Matches the 0.5s CSS transition
 
+            // Play background audio seamlessly across the whole site
+            const bgAudio = document.getElementById('bg-audio');
+            if (bgAudio) {
+                bgAudio.play().catch(err => console.log("Audio play blocked:", err));
+            }
+
             // Initialize the default title background video when warning is clicked
             bgContainer.innerHTML = backgrounds.title;
             const initialVideo = document.getElementById('bg-video');
