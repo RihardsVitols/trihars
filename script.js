@@ -61,6 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Audio Mute / Unmute Toggle Handler
+    const muteBtn = document.getElementById('mute-btn');
+    const bgAudio = document.getElementById('bg-audio');
+
+    if (muteBtn && bgAudio) {
+        muteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (bgAudio.muted) {
+                bgAudio.muted = false;
+                muteBtn.textContent = 'mute';
+            } else {
+                bgAudio.muted = true;
+                muteBtn.textContent = 'unmute';
+            }
+        });
+    }
+
     // Function to load videos dynamically from videos.json
     function loadVideos() {
         fetch('videos.json')
