@@ -303,11 +303,11 @@ body, html {
         max-width: 250px;
     }
 
-    .text-card h1 {
-        font-size: 1.2rem; /* Adjusted from 0.4rem so it's readable */
+    /* .text-card h1 {
+        font-size: 1.2rem;
         margin-bottom: 20px;
         letter-spacing: 1px;
-    }
+    } */
 
     /* 2. Make About / Reach text containers fit screen width nicely */
     .about-container {
@@ -321,7 +321,7 @@ body, html {
         width: 100%; /* Forces text blocks to span the full width */
         box-sizing: border-box;
         text-align: center; /* Keeps text centered, or change to 'left' if preferred */
-        font-size: 0.95rem;
+        font-size: 1.2rem;
         padding: 10px 14px;
     }
 
