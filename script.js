@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Currently active section ID (null when on title page)
     let activeTarget = null;
+    let userManuallyMuted = false; // Tracks if the user explicitly clicked mute
 
     // Original text labels for each navigation link
     const originalLabels = {
@@ -35,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `
     };
 
+    const bgAudio = document.getElementById('bg-audio');
+    const muteBtn = document.getElementById('mute-btn');
+
     // Warning Screen Click to Continue Handler
     const warningScreen = document.getElementById('warning-screen');
     if (warningScreen) {
@@ -46,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500); // Matches the 0.5s CSS transition
 
             // Play background audio seamlessly across the whole site
-            const bgAudio = document.getElementById('bg-audio');
             if (bgAudio) {
                 bgAudio.play().catch(err => console.log("Audio play blocked:", err));
             }
@@ -62,17 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Audio Mute / Unmute Toggle Handler
-    const muteBtn = document.getElementById('mute-btn');
-    const bgAudio = document.getElementById('bg-audio');
-
     if (muteBtn && bgAudio) {
         muteBtn.addEventListener('click', (e) => {
             e.preventDefault();
             if (bgAudio.muted) {
                 bgAudio.muted = false;
+                userManuallyMuted = false;
                 muteBtn.textContent = 'mute';
             } else {
                 bgAudio.muted = true;
+                userManuallyMuted = true;
                 muteBtn.textContent = 'unmute';
             }
         });
@@ -115,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper function to return to the opening title page
     function resetToTitlePage() {
+        const wasVideo = (activeTarget === 'video');
         activeTarget = null;
 
         // Show title page section and hide all others
@@ -131,6 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemTarget = item.getAttribute('data-target');
             item.textContent = originalLabels[itemTarget];
         });
+
+        // If leaving the video section, restore audio if not manually muted
+        if (wasVideo && !userManuallyMuted) {
+            if (bgAudio) bgAudio.muted = false;
+            if (muteBtn) muteBtn.textContent = 'mute';
+        }
 
         // Reset background to opening video safely
         bgContainer.innerHTML = backgrounds.title;
@@ -155,8 +164,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            const wasVideo = (activeTarget === 'video');
             // Otherwise, set new active target
             activeTarget = targetId;
+
+            // Handle audio mute states when entering/leaving video tab
+            if (targetId === 'video') {
+                if (bgAudio) bgAudio.muted = true;
+                if (muteBtn) muteBtn.textContent = 'unmute';
+            } else {
+                if (wasVideo && !userManuallyMuted) {
+                    if (bgAudio) bgAudio.muted = false;
+                    if (muteBtn) muteBtn.textContent = 'mute';
+                }
+            }
 
             // 1. Reset all menu text labels to their original names
             navLinks.forEach(item => {
