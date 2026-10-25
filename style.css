@@ -321,7 +321,7 @@ body, html {
         width: 100%; /* Forces text blocks to span the full width */
         box-sizing: border-box;
         text-align: center; /* Keeps text centered, or change to 'left' if preferred */
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         padding: 10px 14px;
     }
 
