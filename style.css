@@ -286,9 +286,9 @@ body, html {
         right: 0;
         left: 0;
         width: 100%;
-        flex-direction: row; /* Changes from vertical stack to horizontal row */
-        justify-content: center; /* Centers the links horizontally across the top */
-        gap: 25px; /* Spacing between about, index, reach */
+        flex-direction: row; 
+        justify-content: center; 
+        gap: 25px; 
         z-index: 100;
         background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%);
         padding: 10px 0;
@@ -304,25 +304,30 @@ body, html {
     }
 
     .text-card h1 {
-        font-size: 0.4rem;
+        font-size: 1.2rem; /* Adjusted from 0.4rem so it's readable */
         margin-bottom: 20px;
         letter-spacing: 1px;
     }
 
+    /* 2. Make About / Reach text containers fit screen width nicely */
     .about-container {
-        width: 92%;
+        width: 92vw; /* Expands to match mobile viewport width */
         padding: 0 10px;
+        box-sizing: border-box;
     }
 
+    .about-container h1,
     .about-container p {
-        font-size: 0.9rem;
-        padding: 6px 12px;
+        width: 100%; /* Forces text blocks to span the full width */
+        box-sizing: border-box;
+        text-align: center; /* Keeps text centered, or change to 'left' if preferred */
+        font-size: 0.95rem;
+        padding: 10px 14px;
     }
 
-    /* 2. Video Container & Masking for Scrolling */
+    /* 3. Video Container & Masking for Scrolling */
     .video-container {
-        padding-top: 12vh; /* Gives space at the top so videos don't start right under the menu */
-        /* This creates a clipping/mask zone at the top so content vanishes instead of overlapping the menu */
+        padding-top: 12vh; 
         -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%);
         mask-image: linear-gradient(to bottom, transparent 0%, black 15%);
     }
