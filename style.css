@@ -275,13 +275,13 @@ body, html {
     display: block;
 }
 
-/* Social Network Icons Styling */
+/* Social Network Icons Styling (Global Desktop & Base) */
 .social-icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px; /* Spacing between the icons */
-    margin-top: 15px; /* Space between the email and the icons */
+    gap: 15px;
+    margin-top: 15px;
 }
 
 .social-icons a {
@@ -290,7 +290,7 @@ body, html {
 }
 
 .social-icons img {
-    height: 30px; /* Forces exactly 30px height */
+    height: 30px; /* Locks height to 30px */
     width: auto;  /* Maintains aspect ratio */
     display: block;
 }
@@ -328,12 +328,6 @@ body, html {
         max-width: 250px;
     }
 
-    /* .text-card h1 {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-        letter-spacing: 1px;
-    } */
-
     /* 2. Make About / Reach text containers fit screen width nicely */
     .about-container {
         width: 92vw; /* Expands to match mobile viewport width */
@@ -345,12 +339,28 @@ body, html {
     .about-container p {
         width: 100%; /* Forces text blocks to span the full width */
         box-sizing: border-box;
-        text-align: center; /* Keeps text centered, or change to 'left' if preferred */
+        text-align: center; 
         font-size: 1.4rem;
         padding: 10px 14px;
     }
 
-    /* 3. Video Container & Masking for Scrolling */
+    /* 3. Ensure Social Icons stay neatly aligned and 30px on mobile */
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .social-icons img {
+        height: 30px !important; /* Force overrides any large mobile image inheritance */
+        width: auto !important;
+        max-width: none;
+    }
+
+    /* 4. Video Container & Masking for Scrolling */
     .video-container {
         padding-top: 12vh; 
         -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%);
