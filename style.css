@@ -275,6 +275,31 @@ body, html {
     display: block;
 }
 
+/* Social Network Icons Styling */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Spacing between the icons */
+    margin-top: 15px; /* Space between the email and the icons */
+}
+
+.social-icons a {
+    display: inline-block;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons img {
+    height: 30px; /* Forces exactly 30px height */
+    width: auto;  /* Maintains aspect ratio */
+    display: block;
+}
+
+.social-icons a:hover {
+    opacity: 0.7;
+    transform: translateY(-2px);
+}
+
 /* ========================================== */
 /* --- MOBILE RESPONSIVE STYLES (< 768px) --- */
 /* ========================================== */
